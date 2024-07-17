@@ -1,0 +1,20 @@
+---
+ - name: To test ansible handlers
+   hosts: all
+   tasks:
+     - name: to install httpd
+       yum:
+         name: httpd
+         state: latest
+       notify: servicess
+     - name: to create a file
+       lineinfile:
+         path: /tmp/prats
+         line: hello pratik the devops
+         create: yes
+   handlers:
+           - name: servicess
+             service:
+               name: httpd
+               enabled: yes
+               state: started

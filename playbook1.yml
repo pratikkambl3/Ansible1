@@ -1,0 +1,9 @@
+---
+ - name: to crete user
+   hosts: all
+   tasks:
+     - name: to create user
+       user:
+         name: himan
+         state: present
+         uid: 2238

@@ -1,0 +1,16 @@
+---
+ - name: This is loop variable playbook
+   hosts: all
+   vars:
+     grp:
+       - devops1
+       - aws
+       - cloud
+   tasks:
+     - name: To create different group using loop and variables
+       group:
+         name: '{{item}}'
+         state: present
+       loop: '{{grp}}'
+
+     

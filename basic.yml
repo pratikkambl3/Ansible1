@@ -1,0 +1,8 @@
+---
+ - name: This is to test copy module
+   hosts: all
+   tasks:
+     - name: to test copy module
+       copy:
+         src: akki
+         dest: /tmp/

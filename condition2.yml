@@ -1,0 +1,8 @@
+---
+ - name: to test whether external device is coonected
+   hosts: all
+   tasks:
+     - name: to check device
+       debug:
+         msg: the storage device is available
+       when: ansible_devices.xvda is defined

@@ -1,0 +1,20 @@
+---
+- name: This Is variable play
+  hosts: all
+  vars:
+    client: TCS
+    pkg: httpd
+    pkg2: vsftpd
+  tasks:
+    - name: To Add User {{client}}
+      user:
+        name: '{{client}}'
+        state: present
+    - name: To install Package {{pkg}}
+      yum:
+        name: '{{pkg}}'
+        state: latest
+    - name: to install package {{pkg2}}
+      yum:
+        name: '{{pkg2}}'
+        state: latest

@@ -1,0 +1,19 @@
+---
+ - name: This is loop password Playbook
+   hosts: all
+   tasks:
+     - name: to create user and give password
+       user:
+           name: '{{item.name}}'
+           password: '{{item.password}}'
+           uid: '{{item.uid}}'
+           state: present
+       loop:
+           - name: Rajuu
+             password: "{{'redhat' | password_hash('sha512')}}"
+             uid: 2134
+           - name: Babuu
+             password: "{{'redhat' | password_hash('sha512')}}"
+             uid: 3334
+               
+       

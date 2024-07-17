@@ -1,0 +1,12 @@
+---
+ - name: This is loop playbook
+   hosts: all
+   tasks:
+     - name: To create user using loop
+       user:
+         name: '{{item}}'
+         state: present
+       loop:
+         - yashu
+         - yashu2
+         - yashu3

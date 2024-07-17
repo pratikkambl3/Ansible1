@@ -1,0 +1,20 @@
+---
+ - name: This is playbook to understand variables file
+   hosts: all
+   vars_files:
+         - new.yml
+         - new2.yml
+   tasks:
+     - name: to create a group
+       group:
+         name: '{{grp}}'
+         state: present
+     - name: to create a user
+       user:
+         name: '{{client}}'
+         state: present
+         group: cloudgate
+     - name: to install package
+       yum:
+         name: '{{pkg}}'
+         state: latest

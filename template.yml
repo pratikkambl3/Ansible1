@@ -1,0 +1,8 @@
+---
+ - name: This is to check Jinja Template
+   hosts: all
+   tasks:
+     - name: to deploy template
+       template:
+         src: jinja.j2
+         dest: /tmp/akank.txt

@@ -1,0 +1,8 @@
+---
+ - name: this is to test for loop template
+   hosts: all
+   tasks:
+     - name: to test for loop
+       template:
+         src: for.j2
+         dest: /tmp/dog.txt

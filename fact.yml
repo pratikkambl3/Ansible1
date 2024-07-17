@@ -1,0 +1,7 @@
+---
+ - name: This Playbook is used to demonstrate facts
+   hosts: all
+   tasks:
+     - name: to print ip address
+       debug:
+         msg: THE is address is {{ansible_bios_version}}

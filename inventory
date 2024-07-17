@@ -1,0 +1,7 @@
+[application]
+172.31.34.71 
+[database]
+172.31.38.205
+[servers:children]
+application
+database

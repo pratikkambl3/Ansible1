@@ -1,0 +1,20 @@
+---
+ - name: This is First play
+   hosts: all
+   tasks:
+     - name: To Create a group
+       group:
+         name: Boys
+         state: present
+     - name: To Create a user
+       user:
+         name: Jerry
+         state: present
+         group: Boys
+     - name: To Create a Empty File
+       file:
+         path: /tmp/safari
+         state: touch
+         owner: Jerry
+         group: Boys
+         mode: 0777

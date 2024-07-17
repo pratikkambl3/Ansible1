@@ -1,0 +1,67 @@
+---
+ - name: install httpd
+   hosts: all
+   tasks:
+     - name: installing httpd
+       yum:
+         name: httpd
+         state: present
+     - name: starting service
+       service:
+         name: httpd
+         state: started
+         enabled: yes
+     - name: create a file and write something
+       lineinfile:
+         path: /tmp/data
+         line: 'Hello World'
+         create: yes
+     - name: search a word and replace the line
+       lineinfile:
+         path: /tmp/data
+         regexp: 'World'
+         line: 'Welcome to Grras'
+         state: present
+     - name: copy file from contol to manage host
+       copy:
+         src: /tmp/akku
+         dest: /tmp/
+         mode: 0777
+         owner: pratik
+         group: devops
+           #setype: samba_share_t
+     - name: synchronize from control node to manage host
+       synchronize:
+         src: /tmp/akku
+         dest: /tmp/
+           # setype: httpd_sys_content_t
+     - name: create a file
+       file:
+         path: /tmp/AC
+         state: touch
+         mode: 0777
+         owner: pratik
+     - name: Create a directory
+       file:
+         path: /tmp/Akanksha
+         state: directory
+         mode: 0755
+         owner: pratik
+     - name: Start Firewall Service
+       service:
+         name: firewalld
+         state: started
+         enabled: yes
+     - name: add service to firewall
+       firewalld:
+         service: http
+         state: enabled
+         permanent: true
+         immediate: yes
+     - name: add port to firewall
+       firewalld:
+         port: 80/tcp
+         state: enabled
+         permanent: true
+         immediate: yes
+

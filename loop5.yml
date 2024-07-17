@@ -1,0 +1,21 @@
+---
+ - name: this is loop playbook using variables file
+   hosts: all
+   vars_files:
+     - hnvar.yml
+   tasks:
+     - name: to create group using variable files
+       group:
+         name: '{{item}}' 
+         state: present
+       loop: '{{grp}}'
+ - name: to create another group
+   hosts: all
+   vars_files:
+     - denduvar.yml
+   tasks:
+     - name: create groups of gaurav bhau
+       group:
+         name: '{{item}}'
+         state: present
+       loop: '{{grp2}}'

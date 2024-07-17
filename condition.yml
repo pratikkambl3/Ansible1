@@ -1,0 +1,13 @@
+---
+ - name: this is conditional playbook
+   hosts: all
+   vars:
+     OS:
+       - Amazon
+       - RedHat
+   tasks:
+     - name: to install package on linux machine
+       yum:
+         name: httpd
+         state: latest
+       when: ansible_distribution in OS

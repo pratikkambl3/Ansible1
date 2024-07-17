@@ -1,0 +1,12 @@
+---
+ - name: to use playbook
+   hosts: all
+   tasks:
+     - name: to create group
+       group:
+         name: kharra
+         state: present
+ - name: to import playbook1
+   import_playbook: playbook1.yml
+ - name: to import playbook2
+   import_playbook: playbook2.yml 

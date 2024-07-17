@@ -1,0 +1,8 @@
+---
+ - name: to install package
+   hosts: all
+   tasks:
+     - name: to install package
+       yum:
+         name: vsftpd
+         state: latest

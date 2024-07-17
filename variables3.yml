@@ -1,0 +1,12 @@
+---
+ - name: to call variables from inventory file
+   hosts: all
+   tasks:
+     - name: to create group
+       group:
+         name: '{{grp}}'
+         state: present
+     - name: to add user
+       user:
+         name: '{{user}}'
+         state: present
